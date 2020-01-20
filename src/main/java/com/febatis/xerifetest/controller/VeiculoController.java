@@ -7,6 +7,7 @@ import com.febatis.xerifetest.entity.Veiculo;
 import com.febatis.xerifetest.service.VeiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("veiculo")
+@RequestMapping(path = "veiculo", 
+produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 public class VeiculoController {
 
 	@Autowired
@@ -35,7 +37,7 @@ public class VeiculoController {
 		return ResponseEntity.ok(veiculoService.findById(id).get());
 	}
 
-	@PostMapping()
+	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Object> create(@RequestBody Veiculo veiculo) {
 		Veiculo savedVeiculo = veiculoService.save(veiculo);
 
@@ -46,7 +48,7 @@ public class VeiculoController {
 
 	}
 
-	@PutMapping(path = "{id}")
+	@PutMapping(path = "{id}", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Object> update(@PathVariable("id") Long id, @RequestBody Veiculo veiculo) {
 		veiculo.setId(id);
 		Veiculo updatedVeiculo = veiculoService.update(veiculo);
@@ -58,9 +60,9 @@ public class VeiculoController {
 
 	}
 
-	@DeleteMapping(path = "{id}")
+	@DeleteMapping(path = "{id}", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
 	public ResponseEntity<Object> delete(@PathVariable("id") Long id) {
-		
+
 		veiculoService.deleteById(id);
 
 		return ResponseEntity.ok().build();
