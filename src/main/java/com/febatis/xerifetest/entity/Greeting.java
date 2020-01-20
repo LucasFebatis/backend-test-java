@@ -1,25 +1,18 @@
 package com.febatis.xerifetest.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Entity
+@Data
 public class Greeting {
-  
-  private final long id;
-  private final String content;
-  
-  public Greeting() { 
-    id = 0; 
-    content = ""; 
-  }
 
-	public Greeting(long id, String content) {
-		this.id = id;
-		this.content = content;
-	}
+  @Id
+  @GeneratedValue
+  private long id;
+  private String content;
 
-	public long getId() {
-		return id;
-	}
-
-	public String getContent() {
-		return content;
-	}
 }
