@@ -3,8 +3,8 @@ package com.febatis.xerifetest.controller;
 import java.net.URI;
 import java.util.List;
 
-import com.febatis.xerifetest.entity.Greeting;
-import com.febatis.xerifetest.service.GreetingService;
+import com.febatis.xerifetest.entity.Veiculo;
+import com.febatis.xerifetest.service.VeiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/greeting")
-public class GreetingController {
+@RequestMapping("/veiculo")
+public class VeiculoController {
 
 	@Autowired
-	private GreetingService greetingService;
+	private VeiculoService veiculoService;
 
 	@GetMapping()
-	public List<Greeting> greeting() {
-		return greetingService.findAll();
+	public List<Veiculo> veiculo() {
+		return veiculoService.findAll();
 	}
 
 	@PostMapping()
-	public ResponseEntity<Object> createStudent(@RequestBody Greeting greeting) {
-		Greeting savedStudent = greetingService.save(greeting);
+	public ResponseEntity<Object> createVeiculo(@RequestBody Veiculo veiculo) {
+		Veiculo savedVeiculo = veiculoService.save(veiculo);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedStudent.getId()).toUri();
+				.buildAndExpand(savedVeiculo.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
 

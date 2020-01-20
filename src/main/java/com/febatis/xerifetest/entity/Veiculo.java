@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Greeting {
+public class Veiculo {
 
   @Id
   @GeneratedValue
