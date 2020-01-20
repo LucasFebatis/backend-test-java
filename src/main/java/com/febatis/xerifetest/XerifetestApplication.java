@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages = { "com.febatis.xerifetest.entity" })
 @EnableJpaRepositories(basePackages = { "com.febatis.xerifetest.repository" })
-@ComponentScan(basePackages = {"com.febatis.xerifetest.controller"})
+@ComponentScan(basePackages = {"com.febatis.xerifetest.controller", "com.febatis.xerifetest.service"})
 public class XerifetestApplication {
 
 	public static void main(String[] args) {
