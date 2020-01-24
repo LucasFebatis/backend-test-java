@@ -1,3 +1,11 @@
+### Comandos Uteis
+
+## Run Server
+`mvn spring-boot:run`
+
+## Clean Install
+`mvn clean install`
+
 ### FCamara 🚀
 *"Queremos ser como uma árvore, 
   crescer um pouco todos os dias e tentar tocar o céu, 
